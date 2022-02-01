@@ -1,0 +1,14 @@
+--UNPIVOT example
+
+CREATE TABLE pivotvalues (DKK decimal(10,8), NOK decimal(10,8), SEK decimal(10,8), PLN decimal(10,8), CHF decimal(10,8), HRK decimal(10,8), GBP decimal(10,8))
+
+INSERT INTO pivotvalues([DKK],[NOK],[SEK],[PLN],[CHF],[HRK],[GBP]) VALUES(0.13387, 0.09999, 0.9509, 0.2356, 0.05821, 0.13374, 0.24293)
+
+SELECT CurrencyCode, ExchangeRate
+FROM pivotvalues
+UNPIVOT
+(
+ExchangeRate for CurrencyCode IN ([DKK],[NOK],[SEK],[PLN],[CHF],[HRK],[GBP])
+)
+AS P
+_______________________________________________________________________________
